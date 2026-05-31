@@ -1,4 +1,4 @@
-//1일
+//1일 포인터
 #include <stdio.h>
 int main() {
     int num = 10;// 일반 정수형 변수 선언
@@ -13,7 +13,7 @@ int main() {
     return 0;
 }
 
-//2일
+//2일 프림
 #include <stdio.h>
 
 #define V 5
@@ -82,6 +82,73 @@ int main() {
     };
 
     primMST(graph);
+
+    return 0;
+}
+
+//3일 크루스칼
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int u, v, weight;
+} Edge;
+
+int parent[100];
+
+int find(int x) {
+    if (parent[x] == x)
+        return x;
+    return parent[x] = find(parent[x]);
+}
+
+void unite(int a, int b) {
+    a = find(a);
+    b = find(b);
+
+    if (a != b)
+        parent[b] = a;
+}
+
+int compare(const void *a, const void *b) {
+    Edge *e1 = (Edge *)a;
+    Edge *e2 = (Edge *)b;
+    return e1->weight - e2->weight;
+}
+
+int main() {
+    int V, E;
+
+    scanf("%d %d", &V, &E);
+
+    Edge edges[E];
+
+    for (int i = 0; i < E; i++) {
+        scanf("%d %d %d", &edges[i].u, &edges[i].v, &edges[i].weight);
+    }
+
+    for (int i = 1; i <= V; i++) {
+        parent[i] = i;
+    }
+
+    qsort(edges, E, sizeof(Edge), compare);
+
+    int mstWeight = 0;
+
+    for (int i = 0; i < E; i++) {
+        int u = edges[i].u;
+        int v = edges[i].v;
+        int w = edges[i].weight;
+
+        if (find(u) != find(v)) {
+            unite(u, v);
+            mstWeight += w;
+
+            printf("%d - %d (%d)\n", u, v, w);
+        }
+    }
+
+    printf("MST Weight = %d\n", mstWeight);
 
     return 0;
 }
