@@ -150,5 +150,25 @@ int main() {
 
     printf("MST Weight = %d\n", mstWeight);
 
+    //4일 클래스
+    class Account:
+
+  interest_rate = 0.02
+
+  def __init__(self, owner, balance):
+    self.owner = owner
+    self.balance = balance
+  
+  def deposit(self,amount):
+    self.balance += amount
+
+  def apply_interest(self):
+    self.balance += self.balance * Account.interest_rate
+
+acc = Account("홍길동", 10000)
+acc.deposit(5000)
+acc.apply_interest()
+print(f"{acc.owner}님의 최종 잔액: {acc.balance}원")
+
     return 0;
 }
