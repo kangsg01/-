@@ -1,4 +1,4 @@
-//1일 포인터
+#1일 포인터
 #include <stdio.h>
 int main() {
     int num = 10;// 일반 정수형 변수 선언
@@ -13,7 +13,7 @@ int main() {
     return 0;
 }
 
-//2일 프림
+#2일 프림
 #include <stdio.h>
 
 #define V 5
@@ -86,7 +86,7 @@ int main() {
     return 0;
 }
 
-//3일 크루스칼
+#3일 크루스칼
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -150,7 +150,7 @@ int main() {
 
     printf("MST Weight = %d\n", mstWeight);
 
-    //4일 클래스
+    #4일 클래스
     class Account:
 
   interest_rate = 0.02
